@@ -1,0 +1,20 @@
+<database name="default" namespace="Smirik\AdminBundle\Model" defaultIdMethod="native">
+  
+  <table name="profiles" phpName="Profile">
+    <column name="user_id" type="integer" required="true" primaryKey="true" />
+    <column name="vk_id" type="varchar" size="50" required="false" />
+    <column name="first_name" type="varchar" size="100" required="false" />
+    <column name="last_name" type="varchar" size="100" required="false" />
+    <column name="middle_name" type="varchar" size="100" required="false" />
+    <column name="birthday" type="timestamp" required="false" />
+    <column name="position" type="varchar" size="200" required="false" />
+    <column name="phone" type="varchar" size="50" required="false" />
+    <column name="skype" type="varchar" size="50" required="false" />
+    <column name="file" type="varchar" size="100" required="false" />
+    <foreign-key foreignTable="fos_user">
+        <reference local="user_id" foreign="id" />
+    </foreign-key>
+    <behavior name="timestampable" />
+  </table>
+  
+</database>

@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% block javascripts %}
+{% javascripts '@SmirikPropelAdminBundle/Resources/public/js/*'
+               '@SmirikAdminBundle/Resources/public/js/*'
+               '@SmirikCourseBundle/Resources/public/js/*'
+               '@SmirikQuizBundle/Resources/public/js/*' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    
+{% endjavascripts %}
+
+{% endblock %}
+
+{% block stylesheets %}
+{% stylesheets
+    '@SmirikPropelAdminBundle/Resources/public/css/*'
+    '@SmirikAdminBundle/Resources/public/css/*'
+%}
+<link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+{% endblock %}
+
+{% block content_navigation %}
+{% include 'SmirikAdminBundle::navigation.html.twig' %}
+{% endblock %}

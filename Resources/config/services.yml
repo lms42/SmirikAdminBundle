@@ -1,0 +1,16 @@
+services:
+  smirik_admin.menu_renderer:
+    # The class implements Knp\Menu\Renderer\RendererInterface
+    class: Smirik\AdminBundle\Menu\MainRenderer
+    arguments: [] # set your own dependencies here
+    tags:
+      # The alias is what is used to retrieve the menu
+      - { name: knp_menu.renderer, alias: main }
+  
+  my.vkontakte.provider:
+    class: Smirik\AdminBundle\Model\UserManager
+
+  users.configure_menu_listener:
+      class: Smirik\AdminBundle\Event\ConfigureMenuListener
+      tags:
+        - { name: kernel.event_listener, event: smirik_admin.menu_configure, method: onMenuConfigure }

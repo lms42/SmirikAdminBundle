@@ -1,0 +1,77 @@
+{% extends 'SmirikAdminBundle::layout.html.twig' %}
+
+{% block title %}{{ 'User statistics'|trans }}{% endblock %}
+
+{% block header %}
+<h1>{{ 'Statistics'|trans }} <small>{{ user.username }}</small></h1>
+{% endblock %}
+
+{% block body %}
+
+  {% for user_course in users_courses %}
+    <h3>{{ user_course.course.title }}</h3>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th rowspan="2">#</th>
+          <th rowspan="2">{{ 'Title'|trans }}</th>
+          <th rowspan="2">{{ 'Started at'|trans }}</th>
+          <th colspan="4">{{ 'Tasks'|trans }}</th>
+          <th colspan="2">{{ 'Questions'|trans }}</th>
+        </tr>
+        <tr>
+          <th>{{ 'Accepted'|trans }}</th>
+          <th>{{ 'In progress'|trans }}</th>
+          <th>{{ 'Draft'|trans }}</th>
+          <th>{{ 'Mark'|trans }}</th>
+          <th>{{ 'Written'|trans }}</th>
+          <th>{{ 'Visible questions'|trans }}</th>
+        </tr>
+      </thead>
+      {% for lesson in courses_lessons[user_course.courseId] %}
+        <tr {% if lesson.UserLessons.first %}class="{{ lesson.UserLessons.first.BootstrapClass }}"{% endif %}>
+          <td>{{ loop.index }}</td>
+          <td>{{ lesson.title }}</td>
+          <td>{% if lesson.UserLessons.first %}{{ lesson.UserLessons.first.startedAt('Y-m-d') }}{% endif %}</td>
+          <td>{{ tasks_data[user_course.courseId]['tasks'][lesson.id]['accepted']}}</td>
+          <td>{{ tasks_data[user_course.courseId]['tasks'][lesson.id]['in_progress']}}</td>
+          <td>{{ tasks_data[user_course.courseId]['tasks'][lesson.id]['draft']}}</td>
+          <td>
+            {% if tasks_data[user_course.courseId]['count'][lesson.id] == 0 %}
+              —
+            {% else %}
+              {{ tasks_data[user_course.courseId]['marks'][lesson.id]/tasks_data[user_course.courseId]['count'][lesson.id] }}
+            {% endif %}
+          </td>
+          <td>{{ questions_data[user_course.courseId]['questions'][lesson.id] }}</td>
+          <td>{{ questions_data[user_course.courseId]['visible'][lesson.id] }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% endfor %}
+  
+  <h3>{{ 'Quizes'|trans }}</h3>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>{{ 'Title'|trans }}</th>
+        <th>{{ 'Correct answers'|trans }}</th>
+        <th>{{ 'num_questions'|trans }}</th>
+        <th>%</th>
+        <th>{{ 'Date'|trans }}</th>
+      </tr>
+    </thead>
+    {% for user_quiz in user_quizes %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ user_quiz.Quiz.title }}</td>
+        <td>{{ user_quiz.numRightAnswers }}</td>
+        <td>{{ user_quiz.Quiz.numQuestions }}</td>
+        <td>{{ '%10.0f'|format(user_quiz.numRightAnswers / user_quiz.Quiz.numQuestions * 100) }}%</td>
+        <td>{{ user_quiz.createdAt('Y-m-d H:i') }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}

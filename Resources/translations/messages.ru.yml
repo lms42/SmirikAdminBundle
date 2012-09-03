@@ -1,0 +1,29 @@
+admin.home: Панель
+
+admin.main.title: Администрирование
+admin.main.title.comment: главная
+
+# Users & groups
+admin.users.menu:  Пользователи
+admin.groups.menu: Группы
+
+# Base translations
+
+admin.form.action.add:    Добавить
+admin.form.action.create: Создать
+admin.form.action.edit:   Изменить
+admin.form.action.delete: Удалить
+admin.form.action.save:   Сохранить
+admin.form.action.close:  Закрыть
+admin.action.back:        Назад
+
+users: пользователи
+groups: группы
+Groups: Группы
+Plainpassword: Пароль
+
+Statistics: Статистика
+User statistics: Статистика по пользователю
+Written: Написано
+In progress: В работе
+Visible questions: видно

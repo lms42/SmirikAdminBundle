@@ -1,28 +1,48 @@
-<div class="content" style="padding: 3px 0px 5px 10px ;">
-<ul class="nav nav-pills" style="margin-bottom: 0px;">
-  {% set menuItem = knp_menu_get('SmirikAdminBundle:Builder:mainMenu') %}
-  {% for item in menuItem %}
-      {% if item.hasChildren %}
-        <li class="dropdown">
-          <a class="dropdown-toggle"
-             data-toggle="dropdown"
-             href="#">
-              {{ item.label|trans }}
-              <b class="caret"></b>
+<div class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="{{ path('homepage') }}">Главная</a>
+
+            <ul class="nav">
+                {% set menuItem = knp_menu_get('SmirikAdminBundle:Builder:mainMenu') %}
+                {% for item in menuItem %}
+                    {% if item.hasChildren %}
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            {{ item.label|trans }}
+                            <b class="caret"></b>
+                          </a>
+                        <ul class="dropdown-menu">
+                          {% for iitem in item %}
+                            <li><a href="{{ iitem.uri }}">{{ iitem.label|trans }}</a></li>
+                          {% endfor %}
+                        </ul>
+                      </li>
+                    {% else %}
+                      {% if item.isCurrent %}
+                        <li class="active"><a href="{{ item.uri }}">{{ item.label|trans }}</a></li>
+                      {% else %}
+                        <li><a href="{{ item.uri }}">{{ item.label|trans }}</a></li>
+                      {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+            <p class="navbar-text pull-right">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {% if is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('admin_main') }}">Администрирование</a> | 
+            {% endif %}
+            <a href="{{ path('fos_user_profile_show') }}">
+            {{ app.user.username }}</a> | 
+            <a href="{{ path('fos_user_security_logout') }}">
+                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
             </a>
-          <ul class="dropdown-menu">
-            {% for iitem in item %}
-              <li><a href="{{ iitem.uri }}">{{ iitem.label|trans }}</a></li>
-            {% endfor %}
-          </ul>
-        </li>
-      {% else %}
-        {% if item.isCurrent %}
-          <li class="active"><a href="{{ item.uri }}">{{ item.label|trans }}</a></li>
-        {% else %}
-          <li><a href="{{ item.uri }}">{{ item.label|trans }}</a></li>
-        {% endif %}
-      {% endif %}
-  {% endfor %}
-</ul>
+            {% else %}
+            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}
+          
+            </p>
+        </div>
+    </div>
 </div>

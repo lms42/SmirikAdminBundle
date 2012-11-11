@@ -6,7 +6,7 @@
 <h1>{{ 'Statistics'|trans }} <small>{{ user.username }}</small></h1>
 {% endblock %}
 
-{% block body %}
+{% block content %}
 
   {% for user_course in users_courses %}
     <h3>{{ user_course.course.title }}</h3>

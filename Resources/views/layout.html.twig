@@ -21,5 +21,19 @@
 {% endblock %}
 
 {% block navbar %}
-{% include 'SmirikAdminBundle::navigation.html.twig' %}
+    {% include 'SmirikAdminBundle::navigation.html.twig' %}
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="content" style="margin-left: 20px;">
+        {% block header %}{% endblock %}
+        <hr />
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

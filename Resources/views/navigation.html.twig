@@ -4,7 +4,7 @@
             <a class="brand" href="{{ path('homepage') }}">Главная</a>
 
             <ul class="nav">
-                {% set menuItem = knp_menu_get('SmirikAdminBundle:Builder:mainMenu') %}
+                {% set menuItem = knp_menu_get('SmirikAdminBundle:Builder:admin') %}
                 {% for item in menuItem %}
                     {% if item.hasChildren %}
                       <li class="dropdown">

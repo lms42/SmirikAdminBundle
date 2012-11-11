@@ -6,9 +6,9 @@ use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Symfony\Component\EventDispatcher\Event;
 
-class ConfigureMenuEvent extends Event
+class ConfigureMainMenuEvent extends Event
 {
-    const CONFIGURE = 'admin.menu_configure';
+    const CONFIGURE = 'main.menu_configure';
 
     private $factory;
     private $menu;

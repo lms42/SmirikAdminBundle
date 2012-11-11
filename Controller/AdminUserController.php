@@ -37,41 +37,41 @@ class AdminUserController extends AbstractController
 	public function setup()
 	{
 		$this->configure(array(
-								     array('name' => 'id', 'label' => 'Id', 'type' => 'integer', 'options' => array(
-												 'editable' => false,
-												 'listable' => true,
-												 'sortable' => true,
-												 'filterable' => true)),
-		                 array('name' => 'username', 'label' => 'Username', 'type' => 'string', 'options' => array(
-											 'editable' => true,
-											 'listable' => true,
-											 'sortable' => true,
-											 'filterable' => true)),
-										 array('name' => 'email', 'label' => 'Email', 'type' => 'string', 'options' => array(
-											 'editable' => true,
-											 'listable' => true,
-											 'sortable' => true,
-											 'filterable' => true)),
-										 array('name' => 'enabled', 'label' => 'Enabled', 'type' => 'boolean', 'options' => array(
-											 'editable' => true,
-											 'listable' => true,
-											 'sortable' => true,
-											 'filterable' => true)),
-										 array('name' => 'groups', 'label' => 'Groups', 'type' => 'string', 'options' => array(
-											 'editable' => true,
-											 'listable' => true,
-											 'sortable' => true,
-											 'filterable' => true)),
-										 array('name' => 'plainpassword', 'label' => 'Password', 'type' => 'string', 'options' => array(
-											 'editable' => true,
-											 'listable' => false,
-											 'sortable' => true,
-											 'filterable' => true)),
-		                 ),
+                        array('name' => 'id', 'label' => 'Id', 'type' => 'integer', 'options' => array(
+                            'editable' => false,
+                            'listable' => true,
+                            'sortable' => true,
+                            'filterable' => true)),
+                        array('name' => 'username', 'label' => 'Username', 'type' => 'string', 'options' => array(
+                        	 'editable' => true,
+                        	 'listable' => true,
+                        	 'sortable' => true,
+                        	 'filterable' => true)),
+                         array('name' => 'email', 'label' => 'Email', 'type' => 'string', 'options' => array(
+                        	 'editable' => true,
+                        	 'listable' => true,
+                        	 'sortable' => true,
+                        	 'filterable' => true)),
+                         array('name' => 'enabled', 'label' => 'Enabled', 'type' => 'boolean', 'options' => array(
+                        	 'editable' => true,
+                        	 'listable' => true,
+                        	 'sortable' => true,
+                        	 'filterable' => true)),
+                         array('name' => 'groups', 'label' => 'Groups', 'type' => 'string', 'options' => array(
+                        	 'editable' => true,
+                        	 'listable' => true,
+                        	 'sortable' => true,
+                        	 'filterable' => true)),
+                         array('name' => 'plainpassword', 'label' => 'Password', 'type' => 'string', 'options' => array(
+                        	 'editable' => true,
+                        	 'listable' => false,
+                        	 'sortable' => true,
+                        	 'filterable' => true)),
+                        ),
 		                 array('new' => new SingleAction('New', 'new', 'admin_users_new', true),
-											'stat' => new ObjectAction('Statistics', 'stat', 'admin_users_stat', true),
-											'edit' => new ObjectAction('Edit', 'edit', 'admin_users_edit', true),
-											'delete' => new ObjectAction('Delete', 'delete', 'admin_users_delete', true, true))
+                                'stat' => new ObjectAction('Statistics', 'stat', 'admin_users_stat', true),
+                                'edit' => new ObjectAction('Edit', 'edit', 'admin_users_edit', true),
+                                'delete' => new ObjectAction('Delete', 'delete', 'admin_users_delete', true, true))
 		                );
 	}
 
@@ -153,10 +153,10 @@ class AdminUserController extends AbstractController
 		{
 			$lessons = LessonQuery::create('l')
 				->filterByCourseId($user_course->getCourseId())
-				->useUserLessonQuery('ul', 'left join')
-					->where('(ul.UserId = '.$user->getId().' OR ul.UserId IS NULL)')
+				->useUserLessonQuery()
+				    ->filterByUserId($user->getId())
 				->endUse()
-				->joinWith('l.UserLesson', 'left join')
+				->joinWith('l.UserLesson')
 				->orderBySortableRank()
 				->find();
 			

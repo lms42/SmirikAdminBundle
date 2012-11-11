@@ -11,9 +11,10 @@ class ConfigureMenuListener
      */
     public function onMenuConfigure(ConfigureMenuEvent $event)
     {
-      $menu = $event->getMenu();
-      $menu->addChild('admin.users.menu');
-      $menu['admin.users.menu']->addChild('admin.users.menu', array('route' => 'admin_users_index'));
-      $menu['admin.users.menu']->addChild('admin.groups.menu', array('route' => 'admin_groups_index'));
+        $menu = $event->getMenu();
+        $menu->addChild('admin.users.menu');
+        $menu['admin.users.menu']->addChild('admin.users.menu', array('route' => 'admin_users_index'));
+        $menu['admin.users.menu']->addChild('admin.groups.menu', array('route' => 'admin_groups_index'));
     }
+    
 }

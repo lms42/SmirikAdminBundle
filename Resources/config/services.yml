@@ -13,4 +13,4 @@ services:
   users.configure_menu_listener:
       class: Smirik\AdminBundle\Event\ConfigureMenuListener
       tags:
-        - { name: kernel.event_listener, event: smirik_admin.menu_configure, method: onMenuConfigure }
+        - { name: kernel.event_listener, event: admin.menu_configure, method: onMenuConfigure }

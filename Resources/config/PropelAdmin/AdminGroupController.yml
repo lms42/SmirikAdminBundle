@@ -1,0 +1,39 @@
+columns:
+    id:
+        label: Id
+        name: id
+        type: integer
+        builder: simple
+        options:
+            listable: true
+            editable: false
+            sortable: true
+            filterable: true
+    name:
+        label: Name
+        name: name
+        type: string
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+actions:
+    stat:
+        label: Statistics
+        name: stat
+        route: admin_groups_stat
+        builder: object
+        options:
+            route_with_id: true
+            confirmation: false
+    create:
+        route: admin_groups_new
+        extends: create
+    edit:
+        route: admin_groups_edit
+        extends: edit
+    delete:
+        route: admin_groups_delete
+        extends: delete

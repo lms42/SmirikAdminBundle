@@ -1,6 +1,6 @@
 <?php
 
-namespace Smirik\AdminBundle\Form\Type;
+namespace Smirik\AdminBundle\Form\Type\Base;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

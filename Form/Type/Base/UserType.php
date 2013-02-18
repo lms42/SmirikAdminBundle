@@ -1,6 +1,6 @@
 <?php
 
-namespace Smirik\AdminBundle\Form\Type;
+namespace Smirik\AdminBundle\Form\Type\Base;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,14 +14,8 @@ class UserType extends AbstractType
             ->add('username')
             ->add('email')
             ->add('enabled')
-            ->add('groups', 'model', array(
-                  'class'    => 'FOS\UserBundle\Propel\Group',
-                  'multiple' => true,
-                  'required' => false,
-            ))
-            ->add('plainPassword', 'text', array(
-                'required' => false,
-            ))
+            ->add('groups')
+            ->add('plainPassword')
         ;
     }
 
@@ -38,3 +32,4 @@ class UserType extends AbstractType
     }
 
 }
+

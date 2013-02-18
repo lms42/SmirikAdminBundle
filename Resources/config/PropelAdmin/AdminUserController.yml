@@ -1,0 +1,79 @@
+columns:
+    id:
+        label: Id
+        name: id
+        type: integer
+        builder: simple
+        options:
+            listable: true
+            editable: false
+            sortable: true
+            filterable: true
+    username:
+        label: Username
+        name: username
+        type: string
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+    email:
+        label: Email
+        name: email
+        type: string
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+    enabled:
+        label: Enabled
+        name: enabled
+        type: boolean
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+    groups:
+        label: Groups
+        name: groups
+        type: collection
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+    plainPassword:
+        label: PlainPassword
+        name: plainPassword
+        type: string
+        builder: simple
+        options:
+            listable: false
+            editable: true
+            sortable: true
+            filterable: true
+actions:
+    stat:
+        label: Statistics
+        name:  stat
+        route: admin_users_stat
+        builder: object
+        options:
+            route_with_id: true
+            confirmation:  false
+    create:
+        route: admin_users_new
+        extends: create
+    edit:
+        route: admin_users_edit
+        extends: edit
+    delete:
+        route: admin_users_delete
+        extends: delete

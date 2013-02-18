@@ -1,22 +1,21 @@
 {% extends '::base.html.twig' %}
 
 {% block javascripts %}
-{% javascripts '@SmirikPropelAdminBundle/Resources/public/js/*'
-               '@SmirikAdminBundle/Resources/public/js/*'
-               '@SmirikCourseBundle/Resources/public/js/*'
-               '@SmirikQuizBundle/Resources/public/js/*' %}
+    {% javascripts '@SmirikPropelAdminBundle/Resources/public/js/*'
+    '@SmirikAdminBundle/Resources/public/js/*'
+    '@SmirikCourseBundle/Resources/public/js/*'
+    '@SmirikQuizBundle/Resources/public/js/*' %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
-    
-{% endjavascripts %}
+
+    {% endjavascripts %}
 
 {% endblock %}
 
 {% block stylesheets %}
-{% stylesheets
-    '@SmirikPropelAdminBundle/Resources/public/css/*'
-%}
-<link rel="stylesheet" href="{{ asset_url }}" />
-{% endstylesheets %}
+    {% stylesheets
+    '@SmirikPropelAdminBundle/Resources/public/css/*' %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
 {% endblock %}
 
 {% block navbar %}
@@ -24,15 +23,15 @@
 {% endblock %}
 
 {% block body %}
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span12">
-      <div class="content" style="margin-left: 20px;">
-        {% block header %}{% endblock %}
-        <hr />
-        {% block content %}{% endblock %}
-      </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="content" style="margin-left: 20px;">
+                    {% block header %}{% endblock %}
+                    <hr/>
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 {% endblock %}

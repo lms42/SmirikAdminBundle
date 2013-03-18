@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block header %}
+    <h1>{{ 'Profile'|trans }}
+        <small>{{ 'Edit'|trans }}</small>
+    </h1>
+    <hr>
+{% endblock %}
+
+{% block content %}
+<form class="form form-horizontal" id="profile_edit_form" method="post" action="{{ path('profile_edit') }}">
+    {{ form_row(form.first_name) }}
+    {{ form_row(form.last_name) }}
+    {{ form_row(form.skype) }}
+    {{ form_row(form.phone) }}
+    <div class="well">
+        {{ form_rest(form) }}
+        <a href="{{ path('profile_index') }}" class="btn">{{ 'Back'|trans }}</a>
+        <button type="submit" class="btn btn-primary">{{ 'Save'|trans }}</button>
+    </div>
+</form>
+
+{% endblock %}

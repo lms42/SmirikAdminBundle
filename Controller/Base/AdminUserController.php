@@ -17,7 +17,7 @@ class AdminUserController extends AbstractController
 
 	public function getQuery()
 	{
-		return \FOS\UserBundle\Propel\UserQuery::create();
+		return \Smirik\AdminBundle\Model\UserQuery::create();
 	}
 	
 	public function getForm()

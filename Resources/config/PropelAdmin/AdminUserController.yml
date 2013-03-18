@@ -10,13 +10,23 @@ columns:
             sortable: true
             filterable: true
     username:
-        label: Username
+        label: Login
         name: username
         type: string
         builder: simple
         options:
             listable: true
             editable: true
+            sortable: true
+            filterable: true
+    name:
+        label: Full name
+        name:  getName
+        type:  string
+        builder: simple
+        options:
+            listable: true
+            editable: false
             sortable: true
             filterable: true
     email:
@@ -40,7 +50,7 @@ columns:
             sortable: true
             filterable: true
     groups:
-        label: groups
+        label: Groups
         name: groups
         type: collection
         builder: simple

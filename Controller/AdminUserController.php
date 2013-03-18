@@ -8,6 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Smirik\AdminBundle\Controller\Base\AdminUserController as BaseController;
 
+use Smirik\AdminBundle\Model\Profile;
+
 class AdminUserController extends BaseController
 {
 	/**
@@ -25,6 +27,38 @@ class AdminUserController extends BaseController
 		$response = $cm->getResults($user);
 		return $response;
 	}
+    
+    public function newAction()
+    {
+        $this->initialize();
+        $this->object = $this->getObject();
+
+        $request = $this->getRequest();
+        $form    = $this->createForm($this->getForm(), $this->object);
+
+        if ('POST' == $request->getMethod()) {
+            $form->bind($request);
+            if ($form->isValid()) {
+                $this->object->save();
+                
+                $profile = new Profile();
+                $profile->setUser($this->object);
+                $profile->save();
+
+                return $this->redirect($this->generateUrl($this->routes['edit'], array('id' => $this->object->getId())));
+            }
+        }
+
+        $render = array(
+            'layout'  => $this->layout,
+            'object'  => $this->object,
+            'form'    => $form->createView(),
+            'columns' => $this->grid->getColumns(),
+            'routes'  => $this->routes,
+        );
+
+        return $this->render($this->grid->template('form.new'), $render);
+    }
 
 }
 

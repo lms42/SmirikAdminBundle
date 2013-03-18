@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+{% block header %}
+    <h1>{{ 'Profile'|trans }}
+        <small>{{ 'data'|trans }}</small>
+    </h1>
+    <hr>
+{% endblock %}
+
+{% block content %}
+
+<div class="row-fluid">
+    <div class="span5">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td>{{ 'Login'|trans }}</td>
+                <td>{{ app.user.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Email'|trans }}</td>
+                <td>{{ app.user.email }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Groups'|trans }}</td>
+                <td>{{ app.user.groups|join(',') }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Full name'|trans }}</td>
+                <td>{{ app.user.profile.name }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Skype'|trans }}</td>
+                <td>{{ app.user.profile.skype }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Phone'|trans }}</td>
+                <td>{{ app.user.profile.phone }}</td>
+            </tr>
+        </table>
+        <div class="well"><a href="{{ path('profile_edit') }}" class="btn btn-primary">{{ 'Edit profile'|trans }}</a></div>
+        
+    </div>
+    <div class="span4">
+    </div>
+</div>
+{% endblock %}

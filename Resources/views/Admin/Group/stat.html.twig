@@ -30,7 +30,7 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.id }}</td>
-                <td><a href="{{ path('admin_users_stat', {'id': user.id }) }}">{{ user.username }}</a></td>
+                <td><a href="{{ path('admin_users_stat', {'id': user.id }) }}">{{ user.profile.name }}</a></td>
                 {% for lesson in lessons[course.id] %}
                     {% if users_lessons[course.id][lesson.id][user.id] is defined %}
                         {% set tmp = users_lessons[course.id][lesson.id][user.id] %}

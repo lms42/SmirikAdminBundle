@@ -27,7 +27,15 @@ class AdminGroupController extends BaseController
 	 */
 	public function statAction(\FOS\UserBundle\Propel\Group $group)
 	{
-	    $users = $group->getUsers();
+        $users = \FOS\UserBundle\Propel\UserQuery::create('u')
+            ->join('Profile')
+            ->useUserGroupQuery()
+                ->filterByFosGroupId($group->getId())
+            ->endUse()
+            ->with('Profile')
+            ->find()
+        ;
+        
 	    $users_ids = array_keys($users->toArray('Id'));
 	    
 	    $courses = CourseQuery::create()

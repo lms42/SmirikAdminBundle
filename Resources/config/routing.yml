@@ -1,30 +1,3 @@
-
-admin_users_index:
-  pattern: /users
-  defaults: { _controller: SmirikAdminBundle:AdminUser:index, page: 1 }
-
-admin_users_list:
-  pattern: /users/{page}
-  defaults: { _controller: SmirikAdminBundle:AdminUser:index, page: 1 }
-  requirements:
-    page:   \d+
-
-admin_users_edit:
-  pattern: /users/{id}/edit
-  defaults: { _controller: SmirikAdminBundle:AdminUser:edit }
-  requirements:
-    id:   \d+
-
-admin_users_delete:
-  pattern: /users/{id}/delete
-  defaults: { _controller: SmirikAdminBundle:AdminUser:delete }
-  requirements:
-    id:   \d+
-
-admin_users_new:
-  pattern: /users/new
-  defaults: { _controller: SmirikAdminBundle:AdminUser:new }
-
 admin_groups_index:
   pattern: /groups
   defaults: { _controller: SmirikAdminBundle:AdminGroup:index, page: 1 }
@@ -50,3 +23,33 @@ admin_groups_delete:
 admin_groups_new:
   pattern: /groups/new
   defaults: { _controller: SmirikAdminBundle:AdminGroup:new }
+
+admin_users_index:
+    pattern: /users
+    defaults: { _controller: SmirikAdminBundle:AdminUser:index, page: 1 }
+
+admin_users_list:
+    pattern: /users/{page}
+    defaults: { _controller: SmirikAdminBundle:AdminUser:index, page: 1 }
+    requirements:
+        page:   \d+
+
+admin_users_edit:
+    pattern: /users/{id}/edit
+    defaults: { _controller: SmirikAdminBundle:AdminUser:edit }
+    requirements:
+        id:   \d+
+
+admin_users_delete:
+    pattern: /users/{id}/delete
+    defaults: { _controller: SmirikAdminBundle:AdminUser:delete }
+    requirements:
+        id:   \d+
+
+admin_users_new:
+    pattern: /users/new
+    defaults: { _controller: SmirikAdminBundle:AdminUser:new }
+
+admin_users_enable:
+    pattern: /users/enable
+    defaults: { _controller: SmirikAdminBundle:AdminUser:enable }

@@ -40,7 +40,7 @@ columns:
             sortable: true
             filterable: true
     groups:
-        label: Groups
+        label: groups
         name: groups
         type: collection
         builder: simple
@@ -60,6 +60,11 @@ columns:
             sortable: true
             filterable: true
 actions:
+    is_active:
+        route:   admin_users_enable
+        extends: is_active
+        getter: getEnabled
+        setter: setEnabled
     stat:
         label: Statistics
         name:  stat

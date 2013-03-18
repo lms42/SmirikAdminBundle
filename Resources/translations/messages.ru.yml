@@ -25,8 +25,11 @@ Plainpassword: Пароль
 Statistics: Статистика
 User statistics: Статистика по пользователю
 Written: Написано
-In progress: В работе
 Visible questions: видно
 
 User statistics: Статистика по пользователю
 Group statistics: Статистика по группе
+
+Is Active: Включен?
+Name: Название
+Show: Показать

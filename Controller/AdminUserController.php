@@ -39,6 +39,7 @@ class AdminUserController extends BaseController
         if ('POST' == $request->getMethod()) {
             $form->bind($request);
             if ($form->isValid()) {
+                $this->get('fos_user.user_manager')->updateUser($this->object);
                 $this->object->save();
                 
                 $profile = new Profile();
@@ -58,6 +59,40 @@ class AdminUserController extends BaseController
         );
 
         return $this->render($this->grid->template('form.new'), $render);
+    }
+    
+    public function editAction($id)
+    {
+        $this->initialize();
+        
+        $this->object = $this->getQuery()->findPk($id);
+        if (!$this->object) {
+            throw $this->createNotFoundException('Not found');
+        }
+
+        $request = $this->getRequest();
+
+        $form = $this->createForm($this->getForm(), $this->object);
+
+        if ('POST' == $request->getMethod()) {
+            $form->bind($request);
+            if ($form->isValid()) {
+                $this->get('fos_user.user_manager')->updateUser($this->object);
+                $this->object->save();
+
+                return $this->redirect($this->generateUrl($this->routes['index']));
+            }
+        }
+
+        $render = array(
+            'layout'  => $this->layout,
+            'object'  => $this->object,
+            'form'    => $form->createView(),
+            'columns' => $this->grid->getColumns(),
+            'routes'  => $this->routes,
+        );
+
+        return $this->render($this->grid->template('form.edit'), $render);
     }
 
 }

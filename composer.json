@@ -1,8 +1,8 @@
 {
-    "name": "smirik/admin-bundle",
+    "name": "lms42/admin-bundle",
     "description": "Admin bundle for LMS.",
     "keywords": ["admin"],
-    "homepage": "https://4xxi.com",
+    "homepage": "https://lms42.com",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
@@ -12,12 +12,6 @@
             "homepage": "http://4xxi.com"
         }
     ],
-    "require": {
-        "symfony/framework-bundle": "2.*"
-    },
-    "suggest": {
-        "symfony/twig-bundle": "2.*"
-    },
     "autoload": {
         "psr-0": { "Smirik\\AdminBundle": "" }
     },

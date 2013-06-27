@@ -4,21 +4,21 @@ namespace Smirik\AdminBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class GroupType extends AbstractType
 {
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('name')
-        ;
+        $builder->add('name');
     }
 
-    public function getDefaultOptions(array $options)
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array(
-            'data_class' => 'FOS\UserBundle\Propel\Group',
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'FOS\UserBundle\Propel\Group'
+            )
         );
     }
 

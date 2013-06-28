@@ -39,7 +39,7 @@ class ProfileController extends Controller
         $request = $this->getRequest();
         if ('POST' === $request->getMethod())
         {
-            $form->bindRequest($request);
+            $form->submit($request);
             if ($form->isValid())
             {
                 if ($this->getUser()->getId() != $profile->getUserId())

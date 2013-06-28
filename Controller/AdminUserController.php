@@ -37,7 +37,7 @@ class AdminUserController extends BaseController
         $form    = $this->createForm($this->getForm(), $this->object);
 
         if ('POST' == $request->getMethod()) {
-            $form->bind($request);
+            $form->submit($request);
             if ($form->isValid()) {
                 $this->get('fos_user.user_manager')->updateUser($this->object);
                 $this->object->save();
@@ -75,7 +75,7 @@ class AdminUserController extends BaseController
         $form = $this->createForm($this->getForm(), $this->object);
 
         if ('POST' == $request->getMethod()) {
-            $form->bind($request);
+            $form->submit($request);
             if ($form->isValid()) {
                 $this->get('fos_user.user_manager')->updateUser($this->object);
                 $this->object->save();

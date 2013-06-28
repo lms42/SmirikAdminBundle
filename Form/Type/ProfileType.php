@@ -4,10 +4,10 @@ namespace Smirik\AdminBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ProfileType extends AbstractType
 {
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -18,10 +18,12 @@ class ProfileType extends AbstractType
         ;
     }
 
-    public function getDefaultOptions(array $options)
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array(
-            'data_class' => 'Smirik\AdminBundle\Model\Profile',
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'Smirik\AdminBundle\Model\Profile'
+            )
         );
     }
 

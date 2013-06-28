@@ -1,0 +1,15 @@
+{% for image in images %}
+    <a href="#">
+        <img height="100" src="{{ base_dir }}/{{ image.filename }}" alt=""/>
+    </a>
+{% endfor %}
+
+<script>
+    (function ($) {
+        $('a', document).click(function (e) {
+            e.preventDefault();
+            window.opener.CKEDITOR.tools.callFunction( {{ CKEditorFuncNum|default(1) }}, $('img', this).attr('src') );
+            window.close();
+        });
+    })(window.opener.jQuery);
+</script>

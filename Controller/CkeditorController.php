@@ -53,7 +53,7 @@ class CkeditorController extends Controller
         if ( null === $upload_file || ! $upload_file->getClientSize()) {
             return new Response('Error file upload');
         }
-        $orig_filename = $upload_file->getClientOriginalName();
+        $target_filename = time() . '_' . $upload_file->getClientOriginalName();
 
         $fs = new Filesystem();
 
@@ -64,10 +64,10 @@ class CkeditorController extends Controller
             $fs->chmod($upload_dir, 0777);
         }
 
-        $fs->rename($upload_file, $upload_dir . '/' . $orig_filename, $overwrite = true);
+        $fs->rename($upload_file, $upload_dir . '/' . $target_filename, $overwrite = true);
 
         return array(
-            'image_src' => $request->getBasePath() . '/uploads/images/' . $orig_filename,
+            'image_src' => $request->getBasePath() . '/uploads/images/' . $target_filename,
             'CKEditorFuncNum' => $request->query->get('CKEditorFuncNum'),
         );
     }

@@ -24,4 +24,19 @@ class Builder extends ContainerAware
         $this->container->get('event_dispatcher')->dispatch(ConfigureMainMenuEvent::CONFIGURE, new ConfigureMenuEvent($factory, $menu, $this->container));
         return $menu;
     }
+
+    public function getCurrentMenuItem($menu)
+    {
+        foreach ($menu as $item) {
+            if ($item->isCurrent()) {
+                return $item;
+            }
+
+            if ($item->getChildren() && $current_child = $this->getCurrentMenuItem($item)) {
+                return $current_child;
+            }
+        }
+
+        return null;
+    }
 }

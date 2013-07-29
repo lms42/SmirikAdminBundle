@@ -16,5 +16,15 @@ class Profile extends BaseProfile
         }
         return $name;
     }
+
+    public function getTeacherName()
+    {
+        $name = $this->getFirstName().' '.$this->getLastName();
+        if ($name == ' ')
+        {
+            return $this->getUser()->getUsername();
+        }
+        return $name;
+    }
     
 }

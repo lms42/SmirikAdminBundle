@@ -1,9 +1,16 @@
 {% extends '::base.html.twig' %}
 
 {% block header %}
-    <h1>{{ 'Profile'|trans }}
-        <small>{{ 'Edit'|trans }}</small>
-    </h1>
+    {{ 'Profile'|trans }} <small>{{ 'Edit'|trans }}</small>
+{% endblock %}
+
+{% block breadcrumbs %}
+    {% include "SmirikCoreBundle:Menu:breadcrumbs.html.twig" with {
+        items: [
+            {},
+            {label: "Профиль", uri: "#"}
+        ]}
+    %}
 {% endblock %}
 
 {% block content %}

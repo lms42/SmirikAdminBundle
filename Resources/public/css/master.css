@@ -33,4 +33,9 @@ div.well div.control-group div.controls textarea { width: 80%; height: 300px; }
   background-color: #c4e3f3;
 }
 
+div.lesson-content div.pull-right.remove { padding: 5px 10px 5px 0px; }
+div.lesson-content a.add-lesson-content-form { margin: 0px 0px 15px 0px;}
+
 footer { margin: 0 auto; text-align: center; }
+
+table.propel-admin th.column-header-mark { width: 50px;} 

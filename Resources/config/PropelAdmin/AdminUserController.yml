@@ -45,7 +45,7 @@ columns:
         type: boolean
         builder: simple
         options:
-            listable: true
+            listable: false
             editable: true
             sortable: true
             filterable: true
@@ -71,6 +71,7 @@ columns:
             filterable: true
 actions:
     is_active:
+        name: enabled
         route:   admin_users_enable
         extends: is_active
         getter: getEnabled
@@ -83,9 +84,9 @@ actions:
         options:
             route_with_id: true
             confirmation:  false
-    create:
+    new:
         route: admin_users_new
-        extends: create
+        extends: new
     edit:
         route: admin_users_edit
         extends: edit

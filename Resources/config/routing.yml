@@ -52,4 +52,4 @@ admin_users_new:
 
 admin_users_enable:
     pattern: /users/enable
-    defaults: { _controller: SmirikAdminBundle:AdminUser:enable }
+    defaults: { _controller: SmirikAdminBundle:AdminUser:chain }

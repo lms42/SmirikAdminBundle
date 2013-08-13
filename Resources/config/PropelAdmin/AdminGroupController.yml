@@ -28,9 +28,9 @@ actions:
         options:
             route_with_id: true
             confirmation: false
-    create:
+    new:
         route: admin_groups_new
-        extends: create
+        extends: new
     edit:
         route: admin_groups_edit
         extends: edit

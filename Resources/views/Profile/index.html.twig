@@ -18,7 +18,7 @@
 
 <div class="row-fluid">
     <div class="span5">
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered">
             <tr>
                 <td>{{ 'Login'|trans }}</td>
                 <td>{{ app.user.username }}</td>
@@ -44,7 +44,7 @@
                 <td>{{ app.user.profile.phone }}</td>
             </tr>
         </table>
-        <div class="well"><a href="{{ path('profile_edit') }}" class="btn btn-primary">{{ 'Edit profile'|trans }}</a></div>
+        <div class="well"><a href="{{ path('profile_edit') }}" class="button">{{ 'Edit profile'|trans }}</a></div>
         
     </div>
     <div class="span4">

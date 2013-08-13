@@ -54,11 +54,11 @@ class AdminUserController extends BaseController
             'layout'  => $this->layout,
             'object'  => $this->object,
             'form'    => $form->createView(),
-            'columns' => $this->grid->getColumns(),
+            'columns' => $this->get('admin.data.grid')->getColumns(),
             'routes'  => $this->routes,
         );
 
-        return $this->render($this->grid->template('form.new'), $render);
+        return $this->render($this->get('admin.data.grid')->template('form.new'), $render);
     }
     
     public function editAction($id)
@@ -88,11 +88,11 @@ class AdminUserController extends BaseController
             'layout'  => $this->layout,
             'object'  => $this->object,
             'form'    => $form->createView(),
-            'columns' => $this->grid->getColumns(),
+            'columns' => $this->get('admin.data.grid')->getColumns(),
             'routes'  => $this->routes,
         );
 
-        return $this->render($this->grid->template('form.edit'), $render);
+        return $this->render($this->get('admin.data.grid')->template('form.edit'), $render);
     }
 
 }

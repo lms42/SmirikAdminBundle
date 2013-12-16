@@ -84,6 +84,14 @@ actions:
         options:
             route_with_id: true
             confirmation:  false
+    logs:
+        label: Logs
+        name:  logs
+        route: admin_users_logs
+        builder: object
+        options:
+            route_with_id: true
+            confirmation:  false
     new:
         route: admin_users_new
         extends: new

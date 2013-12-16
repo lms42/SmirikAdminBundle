@@ -7,9 +7,6 @@ services:
       # The alias is what is used to retrieve the menu
       - { name: knp_menu.renderer, alias: main }
   
-  my.vkontakte.provider:
-    class: Smirik\AdminBundle\Model\UserManager
-
   users.configure_menu_listener:
       class: Smirik\AdminBundle\Event\ConfigureMenuListener
       tags:

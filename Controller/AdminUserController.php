@@ -12,6 +12,42 @@ use Smirik\AdminBundle\Model\Profile;
 
 class AdminUserController extends BaseController
 {
+    
+	/**
+	 * @Route("/admin/users/{id}/logs", name="admin_users_logs")
+	 * @Template("SmirikAdminBundle:Admin/User:logs.html.twig")
+	 * @Secure(roles="ROLE_ADMIN")
+	 */
+	public function logsAction($id)
+	{
+	    $user = $this->get('fos_user.user_manager')->findUserBy(array('Id' => $id));
+        
+        $start = $this->getRequest()->query->get('start', false);
+        $stop  = $this->getRequest()->query->get('stop', false);
+        
+        if ($start) {
+            $start = new \DateTime($start);
+        } else {
+            $start = new \DateTime();
+            $start->modify('-1 week');
+        }
+        
+        if ($stop) {
+            $stop = new \DateTime($stop);
+        } else {
+            $stop = new \DateTime();
+        }
+        
+		$logs = $this->get('lms42.log.manager')->getUserLogs($user, $start, $stop);
+        
+        return array(
+            'user'  => $user,
+            'logs'  => $logs,
+            'start' => $start,
+            'stop'  => $stop,
+        );
+	}
+    
 	/**
 	 * @Route("/admin/users/{id}/stat", name="admin_users_stat")
 	 * @Template("SmirikAdminBundle:Admin/User:stat.html.twig")

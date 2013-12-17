@@ -1,0 +1,67 @@
+{% extends 'SmirikAdminBundle::layout.html.twig' %}
+
+{% block title %}{{ 'User statistics'|trans }}{% endblock %}
+
+{% block header %}
+    <h1>{{ 'Logs'|trans }} <small>{{ user.profile.name }}</small></h1>
+{% endblock %}
+
+{% block content %}
+
+<h3>{{ start.format('Y-m-d') }} &mdash; {{ stop.format('Y-m-d')}}</h3>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th rowspan="2">{{ 'Id'|trans }}</th>
+            <th rowspan="2">{{ 'Type'|trans }}</th>
+            <th rowspan="2">{{ 'Name'|trans }}</th>
+            <th rowspan="2">{{ 'Amount'|trans }}</th>
+        </tr>
+        </thead>
+        <tr>
+            <td>&mdash;</td>
+            <td>{{ 'Homepage'|trans }}</td>
+            <td>&mdash;</td>
+            <td>{{ logs.homepage }}</td>
+        </tr>
+        <tr>
+            <th colspan="4">{{ 'Courses'|trans }}</th>
+        </tr>
+        {% for course_log in logs.course_logs %}
+            <tr>
+                <td>{{ course_log.object.Id }}</td>
+                <td>{{ 'Course'|trans }}</td>
+                <td>{{ course_log.object.Title }}</td>
+                <td>{{ course_log.num }}</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <th colspan="4">{{ 'Lessons'|trans }}</th>
+        </tr>
+        {% for lesson_log in logs.lesson_logs %}
+            <tr>
+                <td>{{ lesson_log.object.Id }}</td>
+                <td>{{ 'Lesson'|trans }}</td>
+                <td>{{ lesson_log.object.Title }}</td>
+                <td>{{ lesson_log.num }}</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <th colspan="4">{{ 'Tasks'|trans }}</th>
+        </tr>
+        {% for task_log in logs.task_logs %}
+            <tr>
+                <td>{{ task_log.object.Id }}</td>
+                <td>{{ 'Task'|trans }}</td>
+                <td>{{ task_log.object.Title }} / {{ task_log.object.Lesson.Title }}</td>
+                <td>{{ task_log.num }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+    <div class="well">
+        <a href="{{ path('admin_users_index') }}" class="btn">{{ 'Back'|trans }}</a>
+    </div>
+
+{% endblock %}
